@@ -1,0 +1,29 @@
+
+.typing-text {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 3rem;
+  color: white;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 15px;
+  padding: 16px;
+  
+
+}
+
+.prompt {
+  color: #fbbf24;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.cursor {
+  color: #fbbf24;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
