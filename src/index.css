@@ -50,7 +50,7 @@ section {
 }
 
 #acceuil{
-    height: 100rem;
+    height: 100vh;
 }
 #acceuil h1 {
   font-size: 5rem;
