@@ -438,3 +438,68 @@ section {
   box-shadow: 0 0 15px rgba(102, 126, 234, 0.7);
   transition: height 0.1s linear;
 }
+/*---------MOBILE MANAGEMENT---------*/
+
+@media (max-width: 768px) {
+  nav {
+    top: 10px;
+  }
+
+  nav ul {
+    width: 90%; 
+    padding: 10px;
+    gap: 5px;
+  }
+
+  nav ul li:not(.lang-item) {
+    width: auto;
+    flex: 1;
+  }
+
+  nav ul li a {
+    font-size: 0.75rem;
+  }
+
+  #home h1 {
+    font-size: 3rem;
+  }
+
+  #projects h2, #skills h2, #about h2, .presentation h2 {
+    font-size: 2rem;
+  }
+
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .presentation {
+    border-radius: 15px 15px 0 0;
+    padding: 30px 20px;
+  }
+
+  .social-section {
+    flex-direction: row; 
+    border-radius: 0 0 15px 15px; 
+    border-left: none;
+    border-top: 1px solid #eee;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: space-around;
+  }
+
+  .social-label {
+    display: none; 
+  }
+
+  #scroll-rail {
+    display: none; 
+  }
+  
+  /* 5. Ajustement des cartes */
+  .project-card {
+    width: 100%; 
+    max-width: 320px;
+  }
+}
