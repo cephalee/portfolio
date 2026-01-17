@@ -15,8 +15,10 @@ Ce projet est une application web moderne développée avec **React** et **Vite*
 mon-portfolio/
 ├── src/
 │   ├── assets/             # Icônes, images des projets et CV PDF
-│   ├── Bienvenue.jsx       # Composant d'animation de texte (**Effet machine à écrire**)
+│   ├── Walcolme.jsx        # Composant d'animation de texte (**Effet machine à écrire**)
+│   ├── Welcolme.css        # Style pour l'animation welcome
 │   ├── Portfolio.jsx       # **Composant principal**
+│   ├── content.jsx         # Contient les textes
 │   ├── index.css           # Design global et animations
 │   └── main.jsx            # Point d'entrée React
 └── autres                  # Dépendances et scripts
