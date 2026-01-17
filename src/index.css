@@ -1,46 +1,112 @@
 html {
   scroll-behavior: smooth;
 }
-body{
-  background: rgb(233, 229, 249);
 
+body {
+  font-family: sans-serif;
+  background-color: #f4f7ff;
+
+  background-image:
+    linear-gradient(135deg, rgba(118, 75, 162, 0.15) 10%, transparent 10.1%),
+    linear-gradient(135deg, transparent 85%, rgba(102, 126, 234, 0.2) 85.1%),
+    radial-gradient(circle at 100% 50%, #667eea 0%, #764ba2 100%),
+    repeating-linear-gradient(0deg, transparent, transparent 99px, rgba(102, 126, 234, 0.1) 100px);
+
+  background-size: 
+    100% 100%, 
+    100% 100%, 
+    150px 300px,
+    100% 100px;
+
+  background-position: 
+    0 0, 
+    0 0, 
+    100% 50%, 
+    0 0;
+
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background-attachment: fixed;
 }
+
+
+/*---------NAVIGATION MANAGEMENT---------*/
 
 nav {
   position: fixed;
-  bottom: 20px;
+  top: 25px;
   left: 0;
-  width: 100%;
+  width: 100vw; 
+  display: flex;
+  justify-content: center;
   z-index: 1000;
+  pointer-events: none;
 }
 
 nav ul {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 8px 15px;
+  background: rgba(255, 255, 255, 0.9); 
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 550px; 
+  justify-content: space-around; 
+}
+
+nav ul li:not(.lang-item) {
+  
+  width: 90px; 
+  text-align: center;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  white-space: nowrap; 
+}
+
+nav ul li a:hover {
+  color: #667eea;
+}
+
+.lang-item {
+  width: 50px;
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin: 0 auto;
-  padding: 15px 40px;
-  list-style: none;
-  border: 2px solid white;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  width: fit-content;
-  border-radius: 10px;
 }
 
-nav a {
+.lang-btn {
+  width: 42px;
+  height: 26px;
+  background: transparent;
+  border: 1.5px solid #667eea;
+  color: #667eea;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+  background: #667eea;
   color: white;
-  text-decoration: none;
-  padding: 10px 0;
-  transition: all 0.3s ease;
 }
 
-nav a:hover {
-  text-shadow: 0 0 10px white;
-  transform: translateY(-2px);
-}
-
+/*---------SECTION MANAGEMENT---------*/
 section {
-  min-height: 80vh;
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,24 +115,19 @@ section {
   box-sizing: border-box;
 }
 
-#acceuil{
-    height: 100vh;
-}
-#acceuil h1 {
+/*---------HOME SECTION MANAGEMENT---------*/
+
+#home h1 {
   font-size: 5rem;
   font-weight: bold;
   text-align: center;
 }
 
-#projets {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 80px;
-}
+/*---------PROJECTS SECTIONS MANAGEMENT---------*/
 
-#projets h2 {
+
+
+#projects h2 {
   width: 100%;  
   font-size: 3rem;
   text-align: center;
@@ -81,10 +142,9 @@ section {
 
 .projects-container {
   display: flex;
-  gap: 30px;
+  gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 1000px;
 }
 
 .project-card {
@@ -100,13 +160,11 @@ section {
 }
 
 .project-img {
-  
   width: 100%;
   height: 200px;
   object-fit: cover; 
   border-radius: 5px;
   margin-bottom: 15px;
-  background: #eee;
 }
 
 .project-title {
@@ -133,9 +191,7 @@ section {
 
 .project-card:hover{
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px #8f66b750;
-  border-color: #667eea;
-  
+  box-shadow: 0 10px 20px #667eea;  
 }
 
 
@@ -145,8 +201,79 @@ section {
   transform: translateY(-2px);
 }
 
+/*---------SKILLS SECTION MANAGEMENT--------*/
 
-#a-propos {
+
+.skills-container {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#skills h2 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 35px;
+}
+
+.skills-card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.skills-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px #667eea;
+}
+
+.skills-card h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #764ba2;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #f0edff;
+  padding-bottom: 10px;
+}
+
+.skills-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills-card li {
+  color: #555;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  position: relative;
+  padding-left: 20px;
+}
+
+.skills-card li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #667eea;
+  font-weight: bold;
+}
+
+/*---------ABOUT SECTION MANAGEMENT--------*/
+#about {
   min-height: auto;
   display: flex;
   flex-direction: column;
@@ -156,7 +283,7 @@ section {
   margin-bottom: 200px;
 }
 
-#a-propos h2 {
+#about h2 {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 4px;
@@ -198,8 +325,7 @@ section {
 
 .presentation:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 20px #8f66b750;
-  border-color: #667eea;
+  box-shadow: 0 10px 20px #667eea;
 }
 
 .presentation p {
@@ -209,15 +335,15 @@ section {
   margin-bottom: 20px;
 }
 
-.recherche-stage {
+.seeking-internship {
   margin-top: 40px;
   padding: 25px;
-  background:rgb(233, 229, 249);
+  background:  #f4f7ff;
   border-radius: 12px;
   line-height: 1.8; 
 }
 
-.dates-stage {
+.internship-date {
   color: #ffffff;
   background: rgba(102, 126, 234, 0.68);
   padding: 2px 8px;
@@ -225,7 +351,7 @@ section {
   font-weight: 600;
 }
 
-.recherche-stage strong {
+.seeking-internship strong {
   color: #667eea;
   font-weight: 700;
   display: block;
@@ -235,8 +361,6 @@ section {
 .social-section {
   display: flex;
   justify-content: center;
-  background-color: rgb(241, 241, 241);
-  border-radius: 15px;
   flex-wrap: wrap;
   flex-direction: column;
   gap: 30px;
@@ -279,77 +403,38 @@ section {
   transform: translateY(-10px);
 }
 
-#competences {
-  min-height: 65rem;
-  padding: 80px 20px;
-  background: transparent;
+/*---------ANIMATION MANAGEMENT---------*/
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
-.competences-container {
-  max-width: 1000px;
+.project-card{
+  animation: float 4s ease-in-out infinite;
+  
+}
+.project-card:nth-child(2) { animation-delay: 1s; }
+.project-card:nth-child(3) { animation-delay: 2s; }
+
+#scroll-rail {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 1000px;
+  background: rgba(0, 0, 0, 0.1); 
+  border-radius: 10px;
+  z-index: 10000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#scroll-cursor {
   width: 100%;
-  margin: 0 auto;
-}
-
-#competences h2 {
-  font-size: 3rem;
-  text-align: center;
-  margin-bottom: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.competences-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-}
-
-.competence-card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(102, 126, 234, 0.1);
-}
-
-.competence-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px #8f66b750;
-  border-color: #667eea;
-}
-
-.competence-card h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #764ba2;
-  font-size: 1.4rem;
-  border-bottom: 2px solid #f0edff;
-  padding-bottom: 10px;
-}
-
-.competence-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.competence-card li {
-  color: #555;
-  margin-bottom: 12px;
-  line-height: 1.4;
-  position: relative;
-  padding-left: 20px;
-}
-
-.competence-card li::before {
-  content: "▹";
-  position: absolute;
-  left: 0;
-  color: #667eea;
-  font-weight: bold;
+  height: 0%;
+  background: linear-gradient(180deg, #667eea, #764ba2);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(102, 126, 234, 0.7);
+  transition: height 0.1s linear;
 }

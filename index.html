@@ -7,7 +7,20 @@
     <title>mon-portfolio</title>
   </head>
   <body>
+    <div id="scroll-rail">
+      <div id="scroll-cursor"></div>
+    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("scroll-cursor").style.height = scrolled + "%";
+      };
+    </script>
+
   </body>
 </html>

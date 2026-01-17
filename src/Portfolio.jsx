@@ -1,176 +1,135 @@
-import Bienvenue from "./Bienvenue";
+import { useState } from 'react';
+import { content, projects } from './content'; // Importation unifiée
+import Welcome from "./Welcome";
 import cvIcon from "./assets/cv-icon.svg";
 import linkedinIcon from "./assets/linkedin.svg";
 import githubIcon from "./assets/github.svg";
 import mailIcon from "./assets/mail.svg";
-import spaceImg from "./assets/spaceinvader.jpg";
-import siamImg from "./assets/siam.jpg";
-import libImg from "./assets/library-manager.jpg";
-import cv from "./assets/cv.pdf"
-
-const projects = [
-  {
-    id: 1,
-    title: "Space Invader",
-    img: spaceImg,
-    description: "Ce projet est une réimplémentation du célèbre jeu d'arcade Space Invaders en langage C.",
-    link: "https://github.com/cephalee/shell-library-manager"
-  },
-  {
-    id: 2,
-    title: "SIAM",
-    img: siamImg,
-    description: "Mécaniques de poussée et d'orientation dans un environnement web.",
-    link: "https://github.com/cephalee/siam-game-js"
-  },
-  {
-    id: 3,
-    title: "Gestion de Librairie",
-    img: libImg,
-    description: "Système de gestion de bibliothèque.",
-    link: "https://github.com/Diozizo/space_invaders"
-  }
-];
+import cv from "./assets/cv.pdf";
 
 export default function Portfolio() {
+  const [lang, setLang] = useState('fr');
+  const t = content[lang];
+
   const DownloadCV = () => {
     const link = document.createElement('a');
     link.href = cv;
-    link.download = 'mon-cv.pdf';
+    link.download = 'cv-ylies.pdf';
     link.click();
   };
 
   return (
     <>
+
       <nav>
         <ul>
-          <li><a href="#acceuil">Acceuil</a></li>
-          <li><a href="#projets">Projets</a></li>
-          <li><a href="#competences">Compétences</a></li>
-          <li><a href="#a-propos">À propos</a></li>
+          <li><a href="#home">{t.nav[0]}</a></li>
+          <li><a href="#projects">{t.nav[1]}</a></li>
+          <li><a href="#skills">{t.nav[2]}</a></li>
+          <li><a href="#about">{t.nav[3]}</a></li>
+          <li className="lang-item">
+            <button className="lang-btn" onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}>
+            {lang === 'fr' ? 'EN' : 'FR'}
+           </button>
+          </li>
         </ul>
       </nav>
 
-      <section id="acceuil">
-        <Bienvenue />
+      <section id="home">
+        <Welcome />
       </section>
 
-      <section id="projets">
+      <section id="projects">
         <div className="projects-container">
-          <h2>Projets</h2>
+          <h2>{t.titles.projects}</h2>
           {projects.map(project => (
             <div key={project.id} className="project-card">
-              <img 
-                src={project.img} 
-                alt={project.title}
-                className="project-img"
-              />
+              <img src={project.img} alt={project.title} className="project-img" />
               <h3 className="project-title">{project.title}</h3>
-              <p className="project-desc">{project.description}</p>
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noreferrer"
-                className="project-link"
-              >
-                Voir le code source
+              <p className="project-desc">{t.projects_desc[project.id]}</p>
+              <a href={project.link} target="_blank" rel="noreferrer" className="project-link">
+                {t.projectLink}
               </a>
             </div>
           ))}
         </div>
       </section>
-      
-<section id="competences">
-  <div className="competences-container">
-    <h2>Compétences</h2>
 
-    <div className="competences-grid">
-      <div className="competence-card">
-        <h3>Langages</h3>
-        <ul>
-          <li><strong>C</strong> (programmation système et gestion mémoire)</li>
-          <li><strong>Python</strong> (résolution de problèmes, scripts avancés et analyse de données)</li>
-          <li><strong>Java</strong> (programmation orientée objet)</li>
-          <li><strong>HTML / CSS</strong> (structuration et style web)</li>
-          <li><strong>JavaScript</strong> (logique applicative et DOM)</li>
-          <li><strong>Haskell</strong> (programmation fonctionnelle)</li>
-          <li><strong>Shell / Bash</strong> (scripts et automatisation)</li>
-          <li><strong>SQL</strong> (gestion et interrogation de bases de données)</li>
-        </ul>
-      </div>
+      <section id="skills">
+        <div className="skills-container">
+          <h2>{t.titles.skills}</h2>
+          <div className="skills-grid">
+            <div className="skills-card">
+              <h3>{t.skill_categories.lang}</h3>
+              <ul>
+                <li><strong>C</strong> ({t.lang_desc.c})</li>
+                <li><strong>Python</strong> ({t.lang_desc.python})</li>
+                <li><strong>Java</strong> ({t.lang_desc.java})</li>
+                <li><strong>HTML / CSS</strong> ({t.lang_desc.web})</li>
+                <li><strong>JavaScript</strong> ({t.lang_desc.js})</li>
+                <li><strong>Haskell</strong> ({t.lang_desc.haskell})</li>
+                <li><strong>Shell / Bash</strong> ({t.lang_desc.shell})</li>
+                <li><strong>SQL</strong> ({t.lang_desc.sql})</li>
+              </ul>
+            </div>
 
-      <div className="competence-card">
-        <h3>Soft skills</h3>
-        <ul>
-          <li><strong>Esprit analytique</strong> (analyse structurée des problèmes techniques)</li>
-          <li><strong>Rigueur</strong> (attention à la cohérence et à la fiabilité du travail)</li>
-          <li><strong>Esprit critique</strong> (évaluation et amélioration des solutions existantes)</li>
-          <li><strong>Persévérance</strong> (engagement constant face aux difficultés techniques)</li>
-          <li><strong>Curiosité intellectuelle</strong> (j’explore et apprends rapidement de nouvelles tech)</li>
-        </ul>
-      </div>
+            <div className="skills-card">
+              <h3>{t.skill_categories.soft}</h3>
+              <ul>
+                {Object.keys(t.soft_skills_desc).map(key => (
+                  <li key={key}>
+                    <strong>{t.soft_skills_desc[key].name}</strong> ({t.soft_skills_desc[key].desc})
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-      <div className="competence-card">
-        <h3>Outils & Frameworks</h3>
-        <ul>
-          <li><strong>Git / GitHub</strong> (gestion de versions et collaboration)</li>
-          <li><strong>Pandas</strong> (analyse et traitement de données en Python)</li>
-          <li><strong>SDL</strong> (développement de jeux et gestion graphique)</li>
-          <li><strong>React</strong> (création d’interfaces web interactives)</li>
-          <li><strong>Terminal / Bash</strong> (scripts, automatisation et gestion système)</li>
-          <li><strong>Valgrind</strong> (détection de fuites mémoire et analyse de programme C)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+            <div className="skills-card">
+              <h3>{t.skill_categories.tools}</h3>
+              <ul>
+                <li><strong>Git / GitHub</strong> ({t.tool_desc.git})</li>
+                <li><strong>Pandas</strong> ({t.tool_desc.pandas})</li>
+                <li><strong>SDL</strong> ({t.tool_desc.sdl})</li>
+                <li><strong>React</strong> ({t.tool_desc.react})</li>
+                <li><strong>Terminal / Bash</strong> ({t.tool_desc.terminal})</li>
+                <li><strong>Valgrind</strong> ({t.tool_desc.valgrind})</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section id="about">
+        <h2>{t.titles.about}</h2>
+        <div className="about-container">
+          <div className="presentation">
+            <p>{t.about_text}</p>
+            <p className="seeking-internship">
+              <strong>{t.seeking}</strong> <br />
+              <span className="internship-date">{t.date}</span>
+            </p>
+          </div>
 
-
-<section id="a-propos">
-  <h2>À propos</h2>
-  <div class="about-container">
-    <div className="presentation">
-      
-      <p>
-        Je suis étudiant en informatique, avec un intérêt marqué pour la compréhension des systèmes.
-        J’aime aborder le développement comme un exercice de raisonnement : analyser un problème,
-        en comprendre les contraintes, puis construire une solution claire et maîtrisée.
-        Passionné par l'algorithmique et l'architecture logicielle, je recherche toujours à optimiser
-        et à structurer mon code pour qu'il soit à la fois efficace et maintenable.
-      </p>
-      <p className="recherche-stage">
-        Actuellement en pleine montée en compétences, <strong>je suis à la recherche d'un stage 
-      en développement logiciel.</strong> <br />
-        Disponible du <span className="dates-stage">23 mars au 15 mai</span>, je suis prêt à m'investir 
-        pleinement au sein d'une équipe technique pour relever des défis concrets et 
-        contribuer à des projets innovants.
-      </p>
-    </div>
-
-    <div className="social-section">
-      <div className="social-link cv-button-wrapper" onClick={DownloadCV} style={{cursor: 'pointer'}}>
-        <img src={cvIcon} alt="CV" className="social-icon" />
-        <span className="social-label">Mon CV</span>
-      </div>
-
-      <a href="https://linkedin.com/in/ylies-a-346a163a3" target="_blank" rel="noreferrer" className="social-link">
-        <img src={linkedinIcon} alt="LinkedIn" className="social-icon" />
-        <span className="social-label">LinkedIn</span>
-      </a>
-      
-      <a href="https://github.com/cephalee" target="_blank" rel="noreferrer" className="social-link">
-        <img src={githubIcon} alt="GitHub" className="social-icon" />
-        <span className="social-label">GitHub</span>
-      </a>
-      
-      <a href="mailto:yliesabed@gmail.com" className="social-link">
-        <img src={mailIcon} alt="Email" className="social-icon" />
-        <span className="social-label">Email</span>
-      </a>
-    </div>
-  </div>
-</section>
+          <div className="social-section">
+            <div className="social-link cv-button-wrapper" onClick={DownloadCV} style={{ cursor: 'pointer' }}>
+              <img src={cvIcon} alt="CV" className="social-icon" />
+              <span className="social-label">{t.cv_label}</span>
+            </div>
+            <a href="https://linkedin.com/in/ylies-a-346a163a3" target="_blank" rel="noreferrer" className="social-link">
+              <img src={linkedinIcon} alt="LinkedIn" className="social-icon" />
+              <span className="social-label">LinkedIn</span>
+            </a>
+            <a href="https://github.com/cephalee" target="_blank" rel="noreferrer" className="social-link">
+              <img src={githubIcon} alt="GitHub" className="social-icon" />
+              <span className="social-label">GitHub</span>
+            </a>
+            <a href="mailto:yliesabed@gmail.com" className="social-link">
+              <img src={mailIcon} alt="Email" className="social-icon" />
+              <span className="social-label">Email</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

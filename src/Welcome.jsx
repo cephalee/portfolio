@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./Bienvenue.css";
+import "./Welcome.css";
 
-export default function Bienvenue() {
+export default function Welcome() {
   const bienvenueList = [
     "Bienvenue", 
     "ברוך הבא",    
