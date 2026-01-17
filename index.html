@@ -5,10 +5,23 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mon-portfolio</title>
-    <script type="module" crossorigin src="/portfolio/assets/index-ZeqFGvp5.js"></script>
-    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-BZa7y1fE.css">
+    <script type="module" crossorigin src="/portfolio/assets/index-F4cZnLrh.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-D4GhVxHw.css">
   </head>
   <body>
+    <div id="scroll-rail">
+      <div id="scroll-cursor"></div>
+    </div>
     <div id="root"></div>
+    
+    <script>
+      window.onscroll = function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        document.getElementById("scroll-cursor").style.height = scrolled + "%";
+      };
+    </script>
+
   </body>
 </html>
