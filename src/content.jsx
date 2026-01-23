@@ -1,6 +1,7 @@
 import spaceImg from "./assets/spaceinvader.jpg";
 import siamImg from "./assets/siam.jpg";
 import libImg from "./assets/library-manager.jpg";
+import freqImg from "./assets/termifreq.jpg"
 
 export const projects = [
   {
@@ -21,6 +22,12 @@ export const projects = [
     img: libImg,
     link: "https://github.com/cephalee/shell-library-manager"
   },
+  {
+    id: 4,
+    title: "Termifreq",
+    img: freqImg,
+    link: "https://github.com/cephalee/termifreq"
+  },
 ];
 
 export const content = {
@@ -30,7 +37,8 @@ export const content = {
     projects_desc : {
         1: "Ce projet est une réimplémentation du célèbre jeu d'arcade Space Invaders en langage C.",
         2: "Mécaniques de poussée et d'orientation dans un environnement web.",
-        3: "Système de gestion de bibliothèque implémenté en shell."
+        3: "Système de gestion de bibliothèque implémenté en shell.",
+        4: "Visualisation de spectre audio en temps réel pour le terminal implémenté en C."
     },
     projectLink: "Voir le code source",
     skill_categories: {
@@ -74,7 +82,8 @@ export const content = {
     projects_desc: {
       1: "A re-implementation of the famous Space Invaders arcade game written in C.",
       2: "Push and orientation mechanics developed for a web environment.",
-      3: "A comprehensive library management system implemented in shell."
+      3: "A comprehensive library management system implemented in shell.",
+      4: "A real-time audio spectrum visualizer for the terminal implemented in C."
     },
     projectLink: "View source code",
     skill_categories: {
@@ -113,5 +122,6 @@ export const content = {
     date: "Available from March 23rd to May 15th",
   }
 };
+
 
 

@@ -497,7 +497,6 @@ section {
     display: none; 
   }
   
-  /* 5. Ajustement des cartes */
   .project-card {
     width: 100%; 
     max-width: 320px;

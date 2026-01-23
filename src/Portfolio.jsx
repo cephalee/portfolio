@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { content, projects } from './content'; // Importation unifiée
+import { content, projects } from './content';
 import Welcome from "./Welcome";
 import cvIcon from "./assets/cv-icon.svg";
 import linkedinIcon from "./assets/linkedin.svg";
